@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Poppins } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import { ClerkProvider } from "@clerk/nextjs";
+import "./globals.css";
+const poppins = Poppins({ subsets: ["latin"],
+  weight:['400','500','600','700']
+ });
 
 export const metadata: Metadata = {
   title: "Bac Club",
   description: "In house application for clubs and events",
+  icons: '/assets/images/logo.jpg'
 };
 
 export default function RootLayout({
@@ -15,8 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      
+      <body className={poppins.className}>{children}</body>
     </html>
+    </ClerkProvider>
   );
 }
