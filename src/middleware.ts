@@ -6,6 +6,7 @@ import {
 const isProtectedRoute = createRouteMatcher([
   '/clubs(.*)',
   '/communities(.*)',
+  '/create-club(.*)',
 ]);
 
 export default clerkMiddleware((auth, req) => {

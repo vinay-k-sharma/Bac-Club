@@ -12,7 +12,7 @@ export const headerLinks = [
         slug: 'communities'
     },
     {
-        label: 'Profile',
-        slug: '/profile',
+        label: 'Create Club',
+        slug: '/create-club',
     }
 ]
