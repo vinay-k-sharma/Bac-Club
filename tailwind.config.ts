@@ -1,13 +1,15 @@
 import type { Config } from "tailwindcss"
+import { withUt } from "uploadthing/tw";
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+    './src/**/*.{ts,tsx,mdx}',
+  ],
   prefix: "",
   theme: {
     container: {
@@ -17,7 +19,7 @@ const config = {
         "2xl": "1400px",
       },
     },
-    extend: {
+   extend: {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -75,6 +77,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+}
 
-export default config
+export default withUt(config);
