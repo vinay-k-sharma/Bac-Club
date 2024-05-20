@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { Button } from "../ui/button"
 
-const Card = ({clubData} : GetClubsParams) =>{
+const Card = ({ clubData }: { clubData: GetClubsParams }) =>{
     const [showDescription,setShowDescription] = useState(false)
     const toggleDescription = () => {
         setShowDescription(!showDescription)

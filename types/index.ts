@@ -25,12 +25,13 @@ export type CreateClubParams = {
     path:string
 }
 export type GetClubsParams = {
-    clubData : {
+   
         title:string,
         description:string,
         thumbnail:string,
-        category:string
-    }
+        category:string,
+        _id:string
+ 
 }
 export type JoinClubParams = {
     club_id : string,
