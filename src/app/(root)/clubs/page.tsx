@@ -11,7 +11,7 @@ const  Clubs = async() => {
     <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mx-auto w-fit overflow-hidden p-5 bg-gray-50 bg-dotted-pattern bg-contain ">
       {
         clubs?.map((club : GetClubsParams) => (
-          <Card clubData={club}/>
+          <Card key={club._id} clubData={club}/>
         ))
       }
     </div>
