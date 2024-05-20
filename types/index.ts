@@ -13,3 +13,26 @@ export type UpdateUserParams = {
     username:string
     photo:string
 }
+
+export type CreateClubParams = {
+    userId: string,
+    clubData : {
+        title: string,
+        description: string,
+        thumbnail:string,
+        category:string,
+    }
+    path:string
+}
+export type GetClubsParams = {
+    clubData : {
+        title:string,
+        description:string,
+        thumbnail:string,
+        category:string
+    }
+}
+export type JoinClubParams = {
+    club_id : string,
+    user_id:string
+}

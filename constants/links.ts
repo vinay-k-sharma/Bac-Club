@@ -5,11 +5,11 @@ export const headerLinks = [
     },
     {
         label: 'Clubs',
-        slug: 'clubs',
+        slug: '/clubs',
     },
     {
         label: 'Communities',
-        slug: 'communities'
+        slug: '/communities'
     },
     {
         label: 'Create Club',
