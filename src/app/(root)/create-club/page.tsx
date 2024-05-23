@@ -10,9 +10,9 @@ const CreateClub = () => {
 
 
     // If the user does not have the admin role, redirect them to the home page
-    if (sessionClaims?.role !== "admin") {
-      redirect("/");
-    }
+    // if (sessionClaims?.role !== "admin") {
+    //   redirect("/");
+    // }
   return (
     <div>
         <h1>Create Club</h1>

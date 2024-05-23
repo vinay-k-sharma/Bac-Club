@@ -6,6 +6,7 @@ import { Button } from "../ui/button"
 import { toast } from "sonner"
 
 
+
 type HandleJoinParams = {
   club_id: string,
   user_id:string  
@@ -31,7 +32,7 @@ const JoinClubButton = ({club_id,user_id} : HandleJoinParams) => {
     }
   return (
     
-        <Button onClick={handleJoin}>Join Club</Button>
+        <Button  onClick={handleJoin}>Join Club</Button>
   )
 }
 

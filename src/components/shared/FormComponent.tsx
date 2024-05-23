@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { useRouter } from "next/navigation"
+import { useFormStatus } from "react-dom"
 import {
   Form,
   FormControl,
@@ -16,27 +17,32 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { connectToDatabase } from "@/lib/database"
+import { formDefaultValues } from "../../../constants/formDefaultValues"
+
 import { FileUploader } from "./FileUploader"
 import { useUploadThing } from '@/lib/uploadthing'
-import { createClub } from "@/lib/actions/club.action"
-import { CreateClubParams } from "../../../types"
+import { createClub,updateClub } from "@/lib/actions/club.action"
+import { CreateClubParams, GetClubsParams } from "../../../types"
 type ClubFormProps = {
 userId : string,
-type: "Create" | "Update"
+type: "Create" | "Update",
+club : GetClubsParams,
+club_id:string
 }
-const FormComponent = ({userId,type} : ClubFormProps) => {
+const FormComponent = ({userId,type,club,club_id} : ClubFormProps) => {
   const [files, setFiles] = useState<File[]>([])
   const router = useRouter()
+  const status = useFormStatus()
+  const initialValues = club && type === 'Update' 
+  ? { 
+    ...club, 
+  }
+  : formDefaultValues;
   const { startUpload } = useUploadThing('imageUploader')
     const form = useForm<z.infer<typeof clubSchema>>({
         resolver: zodResolver(clubSchema),
-        defaultValues: {
-          title: "",
-          description:"",
-          thumbnail:"",
-          category:"",
-        },
+        
+        defaultValues: initialValues
       })
        async function onSubmit(values: z.infer<typeof clubSchema>) {
             // await connectToDatabase()
@@ -67,9 +73,30 @@ const FormComponent = ({userId,type} : ClubFormProps) => {
                 console.log(error)
               }
             }
-    
             
-        console.log(values)
+            if(type==='Update'){
+              if(!club){
+                router.back()
+                return;
+              }
+              try {
+                const updatedClub = await updateClub({
+                  userId,
+                  club: { ...values, thumbnail: uploadedImageUrl, _id: club_id },
+                  path: `/clubs/${club_id}`
+                })
+        
+                if(updatedClub) {
+                  form.reset();
+                  router.push(`/clubs/${updatedClub._id}`)
+                }
+              } catch (error) {
+                console.log(error);
+              }
+            }
+            
+            
+
       }
       return (
         <Form {...form}>
@@ -129,7 +156,9 @@ const FormComponent = ({userId,type} : ClubFormProps) => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button disabled={status.pending} type="submit">
+              {status.pending ? "Submitting..." : "Submit"}
+            </Button>
           </form>
         </Form>
       )

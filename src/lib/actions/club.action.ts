@@ -1,9 +1,10 @@
 'use server'
 
-import { CreateClubParams,JoinClubParams } from "../../../types"
+import { CreateClubParams,JoinClubParams,UpdateClubParams } from "../../../types"
 import { connectToDatabase } from "../database"
 import Club from "../database/models/club.model"
 import User from "../database/models/user.model"
+import { revalidatePath } from "next/cache"
 
 
 
@@ -16,20 +17,47 @@ export const createClub = async({clubData,userId,path}:CreateClubParams) => {
         }
 
         const newClub = await Club.create({...clubData, organizer : userId})
+        revalidatePath(path)
         
         return JSON.parse(JSON.stringify(newClub))
+        
       }
    catch(error){
     console.log(error)
    }
+}
+export const updateClub = async ({userId,club,path} : UpdateClubParams) => {
+try {
+await connectToDatabase()
+const clubToUpdate = await Club.findById(club._id)
+console.log(clubToUpdate)
+console.log(clubToUpdate.organizer)
+console.log(userId)
+if(!clubToUpdate || clubToUpdate.organizer.toHexString() !== userId){
+    throw new Error('Unauthorized or club not found')
+}
+
+const updatedClub = await Club.findByIdAndUpdate(
+    club._id,
+    { ...club },
+    { new: true }
+  )
+  revalidatePath(path)
+
+  return JSON.parse(JSON.stringify(updatedClub))
+}
+catch(error) {
+    console.log(error)
+}
 }
 
 export const getClubs= async() => {
     try{
         await connectToDatabase()
         const clubs = await Club.find()
+        console.log('Getting club server action rendered')
         return JSON.parse(JSON.stringify(clubs))
-        
+       
     }   
     catch(error)
     {
