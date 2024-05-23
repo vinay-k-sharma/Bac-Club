@@ -26,8 +26,8 @@ import { CreateClubParams, GetClubsParams } from "../../../types"
 type ClubFormProps = {
 userId : string,
 type: "Create" | "Update",
-club : GetClubsParams,
-club_id:string
+club? : GetClubsParams,
+club_id?:string
 }
 const FormComponent = ({userId,type,club,club_id} : ClubFormProps) => {
   const [files, setFiles] = useState<File[]>([])
@@ -75,17 +75,17 @@ const FormComponent = ({userId,type,club,club_id} : ClubFormProps) => {
             }
             
             if(type==='Update'){
-              if(!club){
+              if(!club || !club_id){
                 router.back()
                 return;
               }
               try {
                 const updatedClub = await updateClub({
                   userId,
-                  club: { ...values, thumbnail: uploadedImageUrl, _id: club_id },
+                  club: { ...values, thumbnail: uploadedImageUrl, _id: club_id! },
                   path: `/clubs/${club_id}`
                 })
-        
+            
                 if(updatedClub) {
                   form.reset();
                   router.push(`/clubs/${updatedClub._id}`)
@@ -94,6 +94,7 @@ const FormComponent = ({userId,type,club,club_id} : ClubFormProps) => {
                 console.log(error);
               }
             }
+            
             
             
 
