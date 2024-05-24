@@ -42,8 +42,8 @@ export type GetClubsParams = {
         thumbnail:string,
         category:string,
         _id:string,
-        organizer:string
- 
+        organizer:string,
+        users? : string[]
 }
 export type JoinClubParams = {
     club_id : string,
