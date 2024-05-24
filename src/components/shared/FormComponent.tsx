@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { formDefaultValues } from "../../../constants/formDefaultValues"
+import { formDefaultValues } from "../../../constants/constants"
 
 import { FileUploader } from "./FileUploader"
 import { useUploadThing } from '@/lib/uploadthing'

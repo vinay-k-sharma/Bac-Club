@@ -18,7 +18,7 @@ return  (
         
         <Link href={`/clubs/${clubData._id}`}>
         <h1 className="text-3xl">{clubData.title}</h1>
-        <Image src={clubData.thumbnail} height={500} width={500} alt={clubData.title} />
+        <Image src={clubData.thumbnail} height={500} width={500} alt={clubData.title} className="min-h-[20rem] max-h-[20rem] object-fill"/>
         </Link>
         <span className="text-2xl text-center ">{clubData.category}</span>
         <p className={` font-normal text-gray-800  ${
@@ -29,7 +29,10 @@ return  (
         }
         {
             isOrganizer ? (
+                <>
                 <Button className="mx-5 mt-2 rounded-2xl" onClick={() => router.push(`/your-clubs/${clubData._id}`)}>Update Club</Button>
+                <Button className="mx-5 mt-2 rounded-2xl" onClick={() => router.push(`/manage-clubs/${clubData._id}`)}>Manage Club</Button>
+                </>
             ) : (null)
         }
     </div>

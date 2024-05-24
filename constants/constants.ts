@@ -5,3 +5,4 @@ export const formDefaultValues = {
         category:"",
       
 }
+export const words = ["Join Club", "Join Events", "Create Club" ,"Have Fun !"]
