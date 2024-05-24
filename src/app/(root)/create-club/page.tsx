@@ -15,8 +15,10 @@ const CreateClub = () => {
     // }
   return (
     <div>
-        <h1>Create Club</h1>
+        <h1 className="flex justify-center text-4xl  mb-3 bg-gray-100 bg-dotted-pattern bg-cover bg-center p-5">Create Club</h1>
+        <div className="flex justify-center mt-5 ">
       <FormComponent userId={userId} type="Create"/>
+      </div>
     </div>
   )
 }

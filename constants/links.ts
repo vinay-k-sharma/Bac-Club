@@ -14,5 +14,9 @@ export const headerLinks = [
     {
         label: 'Create Club',
         slug: '/create-club',
+    },
+    {
+        label: 'Joined Clubs',
+        slug: '/joined-clubs'
     }
 ]
