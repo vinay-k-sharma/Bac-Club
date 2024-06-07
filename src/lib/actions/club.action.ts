@@ -77,6 +77,17 @@ export const getClub = async(club_id:string) => {
 
     }
 }
+
+export const getPopulateClub = async(club_id :string) => {
+    try{
+        await connectToDatabase()
+        const club = await Club.findById(club_id).populate("users")
+        return JSON.parse(JSON.stringify(club))
+    }
+    catch(error){
+        console.log(error)
+    }
+}
 export const joinClub = async (club_id : string,user_id : string) => {
     try{
         await connectToDatabase()
@@ -84,13 +95,11 @@ export const joinClub = async (club_id : string,user_id : string) => {
         console.log(club)
         if(!club) {
             throw new Error('Club not found')
-            return false
         }
            
         if(club.users.includes(user_id))
            {
             throw new Error('User already exists')
-            return false
            }
 
         club.users.push(user_id)
@@ -105,3 +114,4 @@ export const joinClub = async (club_id : string,user_id : string) => {
         
     }
 }
+

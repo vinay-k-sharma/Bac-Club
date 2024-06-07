@@ -6,7 +6,8 @@ const ClubSchema = new Schema({
     thumbnail: {type:String,required:true,unique:true},
     category: {type:String,required:true,unique:true},
     organizer: {type:Schema.Types.ObjectId,ref:'User'},
-    users : [{type:Schema.Types.ObjectId,ref:'User'}]
+    users : [{type:Schema.Types.ObjectId,ref:'User'}],
+    events : [{type:Schema.Types.ObjectId,ref:'Event'}]
 })
 const Club = models.Club || model('Club',ClubSchema)
 

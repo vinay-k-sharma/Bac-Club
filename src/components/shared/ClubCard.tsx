@@ -32,6 +32,7 @@ return  (
                 <>
                 <Button className="mx-5 mt-2 rounded-2xl" onClick={() => router.push(`/your-clubs/${clubData._id}`)}>Update Club</Button>
                 <Button className="mx-5 mt-2 rounded-2xl" onClick={() => router.push(`/manage-clubs/${clubData._id}`)}>Manage Club</Button>
+                <Button onClick={() => router.push('/create-event')} className="max-5 mt-2 rounded-2xl">Create Event</Button>
                 </>
             ) : (null)
         }

@@ -1,6 +1,6 @@
 import { getClubs } from "@/lib/actions/club.action"
 import Image from "next/image"
-import Card from '@/components/shared/Card'
+import Card from '@/components/shared/ClubCard'
 import { GetClubsParams } from "../../../../types"
 
 const  Clubs = async() => {
