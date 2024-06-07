@@ -90,7 +90,7 @@ const ClubDetailPage = async ({ params }: { params: Params }) => {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mx-auto w-fit overflow-hidden p-5 bg-gray-50 bg-dotted-pattern bg-contain ">
       {
         events?.map((event : GetEventsParams) => (
-          <EventCard   eventData={event}/>
+          <EventCard  key={event._id} eventData={event}/>
         ))
       } 
     </div>
