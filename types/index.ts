@@ -50,7 +50,13 @@ export type GetClubsParams = {
         organizer:string,
         users? : string[]
 }
-
+export type ClubType = {
+    _id: string,
+    title:string,
+    description:string,
+    thumbnail:string,
+    category:string,
+  }
 export type GetEventsParams = {
         _id:string,
         title:string,
