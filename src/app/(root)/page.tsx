@@ -2,7 +2,7 @@
 import { FlipWords } from "@/components/ui/flip-words";
 import LampComponent from "@/components/shared/LampComponent";
 import { words } from "../../../constants/constants";
-import Card from "@/components/shared/Card";
+import Card from "@/components/shared/ClubCard";
 import { getClubs } from "@/lib/actions/club.action";
 import { GetClubsParams } from "../../../types";
 const Home = async () => {

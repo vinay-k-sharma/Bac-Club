@@ -24,6 +24,11 @@ export type CreateClubParams = {
     }
     path:string
 }
+export type CreateEventParams = {
+    title:string,
+    description:string,
+    thumbnail:string
+}
 export type UpdateClubParams = {
     userId: string,
     club : {
@@ -45,7 +50,25 @@ export type GetClubsParams = {
         organizer:string,
         users? : string[]
 }
+
+export type GetEventsParams = {
+        _id:string,
+        title:string,
+        description:string,
+        thumbnail:string,
+        images?:string[],
+        startDate?:string,
+        endDate?:string
+}
+
+
 export type JoinClubParams = {
     club_id : string,
     user_id:string
+}
+
+export type GetMembersParams  = {
+    firstName:string,
+    lastName:string,
+
 }

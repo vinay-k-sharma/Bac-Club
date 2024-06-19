@@ -1,7 +1,7 @@
 import { getClubs } from "@/lib/actions/club.action"
 import { GetClubsParams } from "../../../../types"
 import { auth } from "@clerk/nextjs/server"
-import Card from "@/components/shared/Card"
+import Card from "@/components/shared/ClubCard"
 const JoinedCLubs = async() => {
     const {sessionClaims} = auth()
     const userId = sessionClaims?.userId as string

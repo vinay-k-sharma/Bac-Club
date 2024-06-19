@@ -1,4 +1,4 @@
-import FormComponent from "@/components/shared/FormComponent"
+import FormComponent from "@/components/shared/ClubFormComponent"
 import { auth } from "@clerk/nextjs/server"
 import { getClub } from "@/lib/actions/club.action"
 interface Params{
