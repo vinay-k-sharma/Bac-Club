@@ -5,7 +5,6 @@ export default function AdminDashboard() {
   const { sessionClaims } = auth();
 
 
-  // If the user does not have the admin role, redirect them to the home page
   if (sessionClaims?.role !== "admin") {
     redirect("/");
   }
