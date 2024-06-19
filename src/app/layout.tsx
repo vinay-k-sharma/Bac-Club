@@ -10,6 +10,8 @@ const poppins = Poppins({ subsets: ["latin"],
 export const metadata: Metadata = {
   title: "Bac Club",
   description: "In house application for clubs and events",
+  manifest: "/manifest.json",
+  keywords: ["bac-club", "clubs", "communities", "bacancy"],
   icons: '/assets/images/logo.jpg'
 };
 

@@ -1,0 +1,18 @@
+{
+  "id": "1",
+  "name": "Bac-Club",
+  "short_name": "Bac-Club",
+  "theme_color": "#00ff00",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    { "src": "/bacancy_technology_logo-144.png", "type": "image/png", "sizes": "144x144","purpose": "maskable any" },
+    { "src": "/bacancy_technology_logo-16.png", "type": "image/png", "sizes": "192x192","purpose": "maskable any" },
+    { "src": "/bacancy_technology_logo-48.png", "type": "image/png", "sizes": "256x256","purpose": "maskable any" },
+    { "src": "/bacancy_technology_logo-64.png", "type": "image/png", "sizes": "512x512","purpose": "maskable any" }
+   
+  ]
+}
